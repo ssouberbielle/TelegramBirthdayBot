@@ -2,9 +2,14 @@ const telegramBot = require('node-telegram-bot-api');
 require('dotenv').config();
 
 const TOKEN = process.env.TOKEN;
-const CHAT_ID = process.env.CHAT_ID;
 
 const bot = new telegramBot(TOKEN, { polling: true });
+
+bot.on('message', (message) => {
+    let chatId = message.chat.id;
+
+    bot.sendMessage(chatId, 'Hola! Bienvenido a Tato Cumples Reminder Bot!');
+});
 
 const birthdayReminders = [
     { name: "INVENTED PERSON", birthday: "2024-02-21" },
@@ -60,9 +65,9 @@ function sendBirthdayReminders() {
         const birthdayDay = parseInt(person.birthday.slice(8));
         
         if (person.name === "Tato" && birthdayMonth === todayMonth && birthdayDay === todayDay) {
-            bot.sendMessage(CHAT_ID, `¡Hoy es tu cumpleaños Tato! 🎉`);
+            bot.sendMessage(chatId, `¡Hoy es tu cumpleaños Tato! 🎉`);
         } else if (birthdayMonth === todayMonth && birthdayDay === todayDay) {
-            bot.sendMessage(CHAT_ID, `¡Hoy es el cumpleaños de ${person.name}! 🎉\n Escribile un mensaje por Whatsapp!`);
+            bot.sendMessage(chatId, `¡Hoy es el cumpleaños de ${person.name}! 🎉\n Escribile un mensaje por Whatsapp!`);
         }
     });
 }
