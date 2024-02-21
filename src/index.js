@@ -77,7 +77,7 @@ const birthdayReminderInterval = setInterval(sendBirthdayReminders, 24 * 60 * 60
 
 // Calcular la cantidad de milisegundos hasta las 9:00 AM
 const now = new Date();
-let msUntil9AM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 24, 0, 0) - now;
+let msUntil9AM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 15, 45, 0, 0) - now;
 
 // Si ya pasó la hora, sumar 24 horas para establecer la próxima ejecución a las 9:00 AM del próximo día
 if (msUntil9AM < 0) {
